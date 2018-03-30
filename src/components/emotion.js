@@ -21,16 +21,9 @@ class Emotion extends Component{
   		const imageSrc = this.webcam.getScreenshot();
   		this.setState({image:imageSrc});
 
-  		axios.post('https://api-us.faceplusplus.com/facepp/v3/detect',
-  		{
-  			api_key:"Tp-urx4Rg9TxHueNgTFpkZjwKRaNscDW",
-  			api_secret:"tJ4HvKH8aKid7pwJafp38L9PanzOUTEU",
-  			image_base64:imageSrc,
-  			return_attributes:"emotion"
-
-  		},{headers:{"Access-Control-Allow-Origin":"http://127.0.0.1:3000"}})
+  		axios.get('http://localhost:8000/detect')
   		.then((response)=>{
-
+  			console.log(response);
   		})
   	}
   	renderImage = () =>{
