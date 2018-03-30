@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 const CardComponent = () => (
   <Card>
-  
+    
     <CardTitle title="Card title" subtitle="Card subtitle" />
     <CardText>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.

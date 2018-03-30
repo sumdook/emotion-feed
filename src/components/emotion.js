@@ -3,27 +3,27 @@ import Webcam from 'react-webcam';
 import axios from 'axios';
 
 import CardComponent from './card';
+import { setEmotion } from './api';
 
 
 import './bootstrap.min.css';
 import './emotion.css';
 
 
-const URL= 'https://api-us.faceplusplus.com/facepp/v3/detect';
-const API_KEY = 'Tp-urx4Rg9TxHueNgTFpkZjwKRaNscDW';
 
 class Emotion extends Component{
 	 setRef = (webcam) => {
     	this.webcam = webcam;
   	}
-	state = {image:""}
+	state = {image:"",feed:[]}
   	getEmotion = () => {
   		const imageSrc = this.webcam.getScreenshot();
   		this.setState({image:imageSrc});
 
   		axios.get('http://localhost:8000/detect')
   		.then((response)=>{
-  			console.log(response);
+  			setEmotion((err,feed)=>this.setState({feed}));
+  			console.log(this.state.feed);
   		})
   	}
   	renderImage = () =>{
