@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
+
+import CardComponent from './card';
+
+
 import './bootstrap.min.css';
-import './emotion.css'; 
+import './emotion.css';
 
 
 const URL= 'https://api-us.faceplusplus.com/facepp/v3/detect';
@@ -24,7 +28,10 @@ class Emotion extends Component{
   			image_base64:imageSrc,
   			return_attributes:"emotion"
 
-  		},{headers:{"Access-Control-Allow-Origin":"http://127.0.0.1:3000"}});
+  		},{headers:{"Access-Control-Allow-Origin":"http://127.0.0.1:3000"}})
+  		.then((response)=>{
+
+  		})
   	}
   	renderImage = () =>{
   		if(this.state.image){
@@ -46,10 +53,12 @@ class Emotion extends Component{
 					<div className="col-sm">
 					{this.renderImage()}
 					</div>
+				
 
 
 				</div>
-				<button className="btn btn-primary" onClick={this.getEmotion}>GetEmotion</button>
+				<button className="btn btn-primary" style={{margin:10}} onClick={this.getEmotion}>GetEmotion</button>
+				<CardComponent />
 			</div>
 		)
 	}
